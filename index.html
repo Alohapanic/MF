@@ -94,12 +94,10 @@
     #story { background: var(--sand); }
     .story-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
     .story-img-wrap { position:relative; }
-    .story-img-placeholder {
-      width:100%; aspect-ratio:4/3; border-radius:16px;
-      background: linear-gradient(135deg, var(--green-mid), var(--teal));
-      display:flex; align-items:center; justify-content:center;
-      font-size:4rem; color:rgba(255,255,255,.5);
+    .story-img-wrap img {
+      width:100%; aspect-ratio:4/3; border-radius:16px; object-fit:cover;
       box-shadow: 0 16px 48px rgba(46,125,82,.25);
+      display:block;
     }
     .story-badge {
       position:absolute; bottom:-20px; right:-20px;
@@ -108,6 +106,16 @@
       text-align:center;
     }
     .story-badge span { display:block; font-size:1.6rem; font-weight:900; color:var(--green-light); }
+
+    /* ===================== MISSION & VISION ===================== */
+    #mission { background: linear-gradient(135deg, var(--green-dark) 0%, var(--teal) 100%); color:#fff; }
+    .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; }
+    .mv-box { background:rgba(255,255,255,.09); border-radius:16px; padding:2.5rem; border:1px solid rgba(255,255,255,.15); }
+    .mv-box h3 { font-size:1.4rem; font-weight:800; margin-bottom:1rem; color:var(--green-light); }
+    .mv-box p { color:rgba(255,255,255,.85); margin-bottom:1rem; }
+    .mv-list { list-style:none; display:flex; flex-direction:column; gap:.75rem; }
+    .mv-list li { display:flex; gap:.75rem; align-items:flex-start; color:rgba(255,255,255,.82); font-size:.92rem; }
+    .mv-list li::before { content:"🌿"; flex-shrink:0; margin-top:.05rem; }
 
     /* ===================== SERVICES ===================== */
     #services { background: var(--white); }
@@ -124,16 +132,6 @@
     .service-tagline { font-size:.85rem; color:var(--teal); font-weight:600; font-style:italic; margin-bottom:.8rem; }
     .service-card p { font-size:.91rem; color:var(--text-mid); }
 
-    /* ===================== MISSION & VISION ===================== */
-    #mission { background: linear-gradient(135deg, var(--green-dark) 0%, var(--teal) 100%); color:#fff; }
-    .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; }
-    .mv-box { background:rgba(255,255,255,.09); border-radius:16px; padding:2.5rem; border:1px solid rgba(255,255,255,.15); }
-    .mv-box h3 { font-size:1.4rem; font-weight:800; margin-bottom:1rem; color:var(--green-light); }
-    .mv-box p { color:rgba(255,255,255,.85); margin-bottom:1rem; }
-    .mv-list { list-style:none; display:flex; flex-direction:column; gap:.75rem; }
-    .mv-list li { display:flex; gap:.75rem; align-items:flex-start; color:rgba(255,255,255,.82); font-size:.92rem; }
-    .mv-list li::before { content:"🌿"; flex-shrink:0; margin-top:.05rem; }
-
     /* ===================== TEAM ===================== */
     #team { background: var(--sand); }
     .team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:3rem; }
@@ -146,19 +144,6 @@
     .team-info { padding:1.2rem; }
     .team-info h4 { font-size:.98rem; font-weight:800; color:var(--green-dark); margin-bottom:.2rem; }
     .team-info span { font-size:.82rem; color:var(--teal); font-weight:600; }
-
-    /* ===================== SHOWCASES ===================== */
-    #showcases { background: var(--white); }
-    .showcase-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; margin-top:3rem; }
-    .showcase-card { border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.09); }
-    .showcase-img {
-      width:100%; height:220px; background: linear-gradient(135deg, var(--teal), var(--green-dark));
-      display:flex; align-items:center; justify-content:center; font-size:4rem; color:rgba(255,255,255,.4);
-    }
-    .showcase-body { padding:1.8rem; background:var(--sand); }
-    .showcase-tag { display:inline-block; background:var(--green-light); color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .7rem; border-radius:12px; margin-bottom:.8rem; }
-    .showcase-body h3 { font-size:1.15rem; font-weight:800; color:var(--green-dark); margin-bottom:.5rem; }
-    .showcase-body p { font-size:.91rem; color:var(--text-mid); }
 
     /* ===================== CTA BAND ===================== */
     #cta-band {
@@ -195,7 +180,7 @@
       background: var(--green-dark); color:rgba(255,255,255,.75);
       padding: 4rem 0 2rem;
     }
-    .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+    .footer-grid { display:grid; grid-template-columns: 2fr 1fr; gap:4rem; margin-bottom:3rem; }
     .footer-brand img { height:44px; margin-bottom:1rem; }
     .footer-brand p { font-size:.88rem; line-height:1.7; }
     .footer-brand .cin { font-size:.78rem; margin-top:.75rem; color:rgba(255,255,255,.45); }
@@ -210,21 +195,20 @@
     .social-links a:hover { background:var(--green-light); color:#fff; }
 
     /* ===================== RESPONSIVE ===================== */
-    /* NEW: Display hamburger menu for tablets (up to 1024px to cover iPad landscape) */
     @media(max-width:1024px) {
       .nav-links { display:none; }
       .hamburger { display:flex; }
     }
-    
+
     @media(max-width:900px) {
       .services-grid { grid-template-columns:1fr 1fr; }
       .team-grid { grid-template-columns:1fr 1fr; }
       .story-grid, .mv-grid, .contact-grid, .footer-grid { grid-template-columns:1fr; }
       .story-badge { right:0; }
     }
-    
+
     @media(max-width:600px) {
-      .services-grid, .showcase-grid, .team-grid { grid-template-columns:1fr; }
+      .services-grid, .team-grid { grid-template-columns:1fr; }
       .hero-stats { gap:1.5rem; }
       .section-title { font-size:1.7rem; }
       .hero-title { font-size:2rem; }
@@ -248,7 +232,6 @@
     <li><a href="#mission">Vision &amp; Mission</a></li>
     <li><a href="#services">Our Services</a></li>
     <li><a href="#team">Our Team</a></li>
-    <li><a href="#showcases">Showcases</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
@@ -261,7 +244,6 @@
   <a href="#mission">Vision &amp; Mission</a>
   <a href="#services">Our Services</a>
   <a href="#team">Our Team</a>
-  <a href="#showcases">Showcases</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -280,7 +262,7 @@
       <a href="#story" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Our Story</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">17+</div><div class="stat-label">Years of Research</div></div>
+      <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Years of Research</div></div>
       <div class="stat"><div class="stat-num">3</div><div class="stat-label">Core Services</div></div>
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Proceeds Reinvested</div></div>
     </div>
@@ -292,7 +274,7 @@
   <div class="container">
     <div class="story-grid">
       <div class="story-img-wrap">
-        <div class="story-img-placeholder" aria-hidden="true"><i class="fa-solid fa-tree"></i></div>
+        <img src="./nature1.png" alt="Mangrove restoration scene" />
         <div class="story-badge">Est.<span>2025</span>Kerala, India</div>
       </div>
       <div>
@@ -313,6 +295,40 @@
           purpose move forward together.
         </p>
         <a href="#mission" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> Read Our Full Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISSION & VISION ===== -->
+<section id="mission" aria-labelledby="mission-title">
+  <div class="container">
+    <span class="section-tag" style="background:var(--green-light);">Our Purpose</span>
+    <h2 class="section-title" id="mission-title" style="color:#fff; margin-bottom:.5rem;">Vision &amp; Mission</h2>
+    <div class="divider"></div>
+    <div class="mv-grid">
+      <div class="mv-box">
+        <h3><i class="fa-solid fa-eye" style="margin-right:.5rem;"></i>Our Vision</h3>
+        <p>We envision a future where healthy mangrove ecosystems thrive alongside resilient coastal
+        communities, playing a central role in climate change mitigation, biodiversity conservation,
+        and sustainable livelihoods.</p>
+        <p>Our vision is to position mangroves as <strong style="color:var(--green-light);">living climate solutions</strong> —
+        protecting coastlines, storing blue carbon, supporting livelihoods, and strengthening
+        ecological resilience — guided by science, equity, and long-term commitment.</p>
+      </div>
+      <div class="mv-box">
+        <h3><i class="fa-solid fa-bullseye" style="margin-right:.5rem;"></i>Our Mission</h3>
+        <p>To conserve, restore, and sustainably manage mangrove and coastal ecosystems through
+        science-based research, community-centred action, and climate-focused solutions. We work to:</p>
+        <ul class="mv-list">
+          <li>Protect and restore mangroves through afforestation and ecological rehabilitation</li>
+          <li>Advance blue carbon science and climate research</li>
+          <li>Develop nature-based carbon offset projects aligned with global standards</li>
+          <li>Utilise carbon finance exclusively for ecosystem and community benefit</li>
+          <li>Strengthen community resilience and sustainable livelihoods</li>
+          <li>Build knowledge through research, training, and advisory services</li>
+          <li>Foster strategic partnerships to scale conservation impact</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -356,40 +372,6 @@
         <p>Scientific research, environmental consultancy, and technical advisory for conservation and
         climate initiatives — including capacity-building, livelihood development, monitoring tools,
         policy publications, awareness programmes, and multi-stakeholder restoration partnerships.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MISSION & VISION ===== -->
-<section id="mission" aria-labelledby="mission-title">
-  <div class="container">
-    <span class="section-tag" style="background:var(--green-light);">Our Purpose</span>
-    <h2 class="section-title" id="mission-title" style="color:#fff; margin-bottom:.5rem;">Vision &amp; Mission</h2>
-    <div class="divider"></div>
-    <div class="mv-grid">
-      <div class="mv-box">
-        <h3><i class="fa-solid fa-eye" style="margin-right:.5rem;"></i>Our Vision</h3>
-        <p>We envision a future where healthy mangrove ecosystems thrive alongside resilient coastal
-        communities, playing a central role in climate change mitigation, biodiversity conservation,
-        and sustainable livelihoods.</p>
-        <p>Our vision is to position mangroves as <strong style="color:var(--green-light);">living climate solutions</strong> —
-        protecting coastlines, storing blue carbon, supporting livelihoods, and strengthening
-        ecological resilience — guided by science, equity, and long-term commitment.</p>
-      </div>
-      <div class="mv-box">
-        <h3><i class="fa-solid fa-bullseye" style="margin-right:.5rem;"></i>Our Mission</h3>
-        <p>To conserve, restore, and sustainably manage mangrove and coastal ecosystems through
-        science-based research, community-centred action, and climate-focused solutions. We work to:</p>
-        <ul class="mv-list">
-          <li>Protect and restore mangroves through afforestation and ecological rehabilitation</li>
-          <li>Advance blue carbon science and climate research</li>
-          <li>Develop nature-based carbon offset projects aligned with global standards</li>
-          <li>Utilise carbon finance exclusively for ecosystem and community benefit</li>
-          <li>Strengthen community resilience and sustainable livelihoods</li>
-          <li>Build knowledge through research, training, and advisory services</li>
-          <li>Foster strategic partnerships to scale conservation impact</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -446,7 +428,7 @@
       </div>
       <div class="team-card">
         <div class="team-avatar">
-          <img src="./KK.png" alt="Photo of Mr. Kutti Krishnan" style="width: 100%; height: 100%; object-fit: contain;" />
+          <img src="./KK.png" alt="Photo of Mr. Kutti Krishnan" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
         <div class="team-info">
           <h4>Mr. Kutti Krishnan</h4>
@@ -454,51 +436,6 @@
           <p style="font-size:.82rem; color:var(--text-mid); margin-top:.6rem;">
             Serial entrepreneur in sustainability. Founder of Bumberry — India's pioneering eco-friendly
             cloth diaper brand (est. 2013). Leads strategic planning, sourcing, and brand growth.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SHOWCASES ===== -->
-<section id="showcases" aria-labelledby="showcases-title">
-  <div class="container">
-    <span class="section-tag">Field Stories</span>
-    <h2 class="section-title" id="showcases-title">Showcases</h2>
-    <div class="divider"></div>
-    <p class="section-lead" style="margin-bottom:0;">Real impact from the ground — stories of restoration, community, and resilience.</p>
-    <div class="showcase-grid">
-      <div class="showcase-card">
-        <div class="showcase-img" aria-hidden="true"><i class="fa-solid fa-water"></i></div>
-        <div class="showcase-body">
-          <span class="showcase-tag">Restoration</span>
-          <h3>The Narakkal Shoreline Revival</h3>
-          <p>
-            In early 2025, The Mangrove Forum partnered with fishermen's cooperatives along the Narakkal
-            coastline to rehabilitate 12 hectares of degraded mangrove habitat. Over six months, over
-            8,000 propagules of <em>Avicennia marina</em> and <em>Rhizophora mucronata</em> were planted
-            by trained community members. By December 2025, 78% survival rates were recorded, with
-            measurable reduction in shoreline erosion and the return of native bird species to the area.
-            The project also generated 42 seasonal green livelihoods for local families, demonstrating
-            that ecological restoration and community wellbeing go hand in hand.
-          </p>
-        </div>
-      </div>
-      <div class="showcase-card">
-        <div class="showcase-img" aria-hidden="true"><i class="fa-solid fa-cloud"></i></div>
-        <div class="showcase-body">
-          <span class="showcase-tag">Blue Carbon</span>
-          <h3>Mapping Carbon in Kerala's Hidden Mangroves</h3>
-          <p>
-            In a first-of-its-kind study in Kerala, The Mangrove Forum's research team conducted
-            systematic carbon baseline assessments across 6 estuarine mangrove sites spanning Ernakulam
-            and Thrissur districts. Using nationally recognised protocols, the team quantified above- and
-            below-ground carbon stocks, revealing that some degraded patches still held significant
-            sequestration potential. The findings — presented at a national coastal science symposium in
-            Kochi — laid the groundwork for Kerala's first community-led blue carbon credit project,
-            expected to enter verification in 2026 and channel carbon finance directly into habitat
-            protection and coastal community welfare.
           </p>
         </div>
       </div>
@@ -525,13 +462,6 @@
     <div class="contact-grid">
       <div>
         <div class="contact-item">
-          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-          <div>
-            <h4>Phone</h4>
-            <a href="tel:+919746592897">+91 97465 92897</a>
-          </div>
-        </div>
-        <div class="contact-item">
           <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
           <div>
             <h4>Email</h4>
@@ -555,7 +485,8 @@
       </div>
       <div class="contact-form">
         <h3 style="font-size:1.15rem; font-weight:800; color:var(--green-dark); margin-bottom:1.5rem;">Send Us a Message</h3>
-        <form>
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="dbced07a-b0ed-44f1-9149-802cf2c256a2">
           <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -596,17 +527,7 @@
           <li><a href="#mission">Vision &amp; Mission</a></li>
           <li><a href="#services">Our Services</a></li>
           <li><a href="#team">Our Team</a></li>
-          <li><a href="#showcases">Showcases</a></li>
           <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Accessibility Statement</a></li>
-          <li><a href="#">Terms &amp; Conditions</a></li>
-          <li><a href="#">Refund Policy</a></li>
         </ul>
       </div>
     </div>
